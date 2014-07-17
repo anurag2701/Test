@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Insync_Sync>
+			<version>0.1.0</version>
+		</Insync_Sync>
+	</modules>
+	<!-- all lookup directories are defined below -->
+	<global>
+		<helpers> <!-- Helper directory -->
+			<insync_sync>
+				<class>Insync_Sync_Helper</class>
+			</insync_sync>
+		</helpers>
+		<blocks> <!-- Block directory -->
+			<insync_sync>
+				<class>Insync_Sync_Block</class>
+			</insync_sync>
+		</blocks>
+	</global>
+	<!-- Here we loaded Adminhtml controllers. Admin router URL : admin/sync/ -->
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<insync_sync after="Mage_Adminhtml">Insync_Sync_Adminhtml</insync_sync>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<insync_sync>
+					<!-- We again keep a nice naming convention and make our module upgrade 
+						proof by placing it in a separate folder - Since we are in the adminhtml 
+						node, this will look for the XML file in the app/design/adminhtml/default/default/layout 
+						root folder -->
+					<file>insync/sync.xml</file>
+				</insync_sync>
+			</updates>
+		</layout>
+	</adminhtml>
+
+	 <adminhtml>
+		<layout>
+			<updates>
+				<insync_sync>
+					<file>insync/sync.xml</file>
+				</insync_sync>
+			</updates>
+		</layout>
+	</adminhtml> 
+
+	<!-- Frontend router -->
+	<!-- <frontend> <routers> <sync> <use>standard</use> <args> <module>Insync_Sync_Adminhtml</module> 
+		<frontName>sync</frontName> </args> </sync> </routers> </frontend> -->
+
+</config>
